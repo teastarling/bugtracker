@@ -19,11 +19,11 @@ const userSchema = new Schema({
     required: true,
     minlength: 5,
   },
-  project: [{
+  projects: [{
     type: Schema.ObjectId,
     ref: 'Project',
   }],
-  issue: [{
+  issues: [{
     type: Schema.ObjectId,
     ref: 'Issue',
   }]
