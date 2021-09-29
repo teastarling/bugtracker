@@ -7,6 +7,11 @@ const projectSchema = new Schema({
         required: true,
         trim: true,
     },
+    status: {
+        type: String,
+        required: true,
+        trim: true,
+    },
     description: {
         type: String,
         trim: true,
