@@ -47,9 +47,10 @@ const typeDefs = gql`
   type Mutation {
     addUser(username: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
-    addProject()
-    addItem(name: String!, genre: String!, location: String!, condition: String!, description: String, image_id: String!): Item
-    removeItem (itemId: ID!): Item
+    addIssue(name: String!, status: String!, description: String!): Issue
+    addProject(name: String!, status: String!, description: String!): Project
+    removeProject (projectId: ID!): Project
+    removeIssue (issueID: ID!): Issue
   }
 `;
 // export typedefs
