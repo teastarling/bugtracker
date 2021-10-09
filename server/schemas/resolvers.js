@@ -1,5 +1,5 @@
 const { AuthenticationError } = require('apollo-server-express');
-const { User, Item  } = require('../models');
+const { User, Issue, Project  } = require('../models');
 const { signToken } = require('../utils/auth');
 // importing models, authentication error response from apollo server, and token from auth file
 
