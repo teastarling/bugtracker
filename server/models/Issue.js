@@ -28,6 +28,6 @@ const issueSchema = new Schema({
     }
 });
 
-const Project = model('Project', projectSchema);
+const Issue = model('Issue', issueSchema);
 
-module.exports = Project;
+module.exports = Issue;
