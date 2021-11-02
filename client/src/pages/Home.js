@@ -1,1 +1,1 @@
-// Homepage with directory for site
+// Homepage with directory for site: nav, projects, login/logout, account
