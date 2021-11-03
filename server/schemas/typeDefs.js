@@ -25,7 +25,7 @@ const typeDefs = gql`
     status: String!
     description: String
     user: String!
-    issues: 
+    issues: [Issue]
   }
 
   type Auth {

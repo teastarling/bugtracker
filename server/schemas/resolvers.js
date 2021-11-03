@@ -14,13 +14,13 @@ const resolvers = {
       return User.findOne({ username: username }).populate('item');
     },
     // find one item via item's id
-    item: async(parent, { itemId }) => {
-      return Item.findOne({ _id: itemId })
+    project: async(parent, { projectId }) => {
+      return Project.findOne({ _id: projectId })
     },
     // if username provided, search for item by username, else find all items and sort by reverse creation order
-    items: async(parent, { username }) => {
+    project: async(parent, { username }) => {
       const params = username ? { username } : {};
-      return Item.find(params).sort({createdAt: -1})
+      return Project.find(params).sort({createdAt: -1})
     },
     // search for item via genre
     genreItems: async(parent, { genre }) => {
