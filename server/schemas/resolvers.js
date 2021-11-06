@@ -60,9 +60,9 @@ const resolvers = {
       return { token, user };
     },
     // add item and include relevant username and email from user context (logged in user), then use that same context to update user with new item id
-    addItem: async (parent, { name, genre, location, condition, description, image_id }, context) => {
+    addProject: async (parent, { name, genre, location, condition, description, image_id }, context) => {
       if (context.user) {
-        const item = await Item.create({
+        const project = await Project.create({
           name, genre, location, condition, description, image_id,
           user: context.user.username,
           email: context.user.email
@@ -70,10 +70,10 @@ const resolvers = {
 
         await User.findOneAndUpdate(
           { _id: context.user._id },
-          { $addToSet: { item: item._id } }
+          { $addToSet: { project: project._id } }
         );
 
-        return item;
+        return project;
       }
       console.log(context.user.username);
       throw new AuthenticationError('You need to be logged in!');
