@@ -59,13 +59,12 @@ const resolvers = {
 
       return { token, user };
     },
-    // add item and include relevant username and email from user context (logged in user), then use that same context to update user with new item id
-    addProject: async (parent, { name, genre, location, condition, description, image_id }, context) => {
+    // add project and include relevant username from user context (logged in user), then use that same context to update user with new item id
+    addProject: async (parent, { name, status, description }, context) => {
       if (context.user) {
         const project = await Project.create({
-          name, genre, location, condition, description, image_id,
-          user: context.user.username,
-          email: context.user.email
+          name, status, description,
+          user: context.user.username
         });
 
         await User.findOneAndUpdate(
@@ -79,19 +78,19 @@ const resolvers = {
       throw new AuthenticationError('You need to be logged in!');
     },
     // remove item based on item id and according to user context (logged in)
-    removeItem: async (parent, { itemId }, context) => {
+    removeProject: async (parent, { projectId }, context) => {
       if (context.user) {
-        const item = await Item.findOneAndDelete({
-          _id: itemId,
+        const project = await Project.findOneAndDelete({
+          _id: projectId,
           user: context.user.username,
         });
 
         await User.findOneAndUpdate(
           { _id: context.user._id },
-          { $pull: { item: item._id } }
+          { $pull: { project: project._id } }
         );
 
-        return item;
+        return project;
       }
       throw new AuthenticationError('You need to be logged in!');
     }
