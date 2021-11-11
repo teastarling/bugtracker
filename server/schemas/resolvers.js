@@ -9,11 +9,11 @@ const resolvers = {
     users: async () => {
       return User.find();
     },
-    // find single user by username and populate item field with relevant items
+    // find single user by username and populate project field with relevant projects
     user: async (parent, { username }) => {
       return User.findOne({ username: username }).populate('item');
     },
-    // find one item via item's id
+    // find one project via project's id
     project: async(parent, { projectId }) => {
       return Project.findOne({ _id: projectId })
     },
