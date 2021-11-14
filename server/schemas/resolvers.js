@@ -29,7 +29,7 @@ const resolvers = {
     // search for user via the user context (logged in user) - throw error if not logged in
     me: async (parent, args, context) => {
       if (context.user) {
-        return User.findOne({ _id: context.user._id }).populate('item');
+        return User.findOne({ _id: context.user._id }).populate('project');
       }
       throw new AuthenticationError('You need to be logged in!');
     },
