@@ -77,7 +77,7 @@ const resolvers = {
       console.log(context.user.username);
       throw new AuthenticationError('You need to be logged in!');
     },
-    // remove item based on item id and according to user context (logged in)
+    // remove project based on project id and according to user context (logged in)
     removeProject: async (parent, { projectId }, context) => {
       if (context.user) {
         const project = await Project.findOneAndDelete({
