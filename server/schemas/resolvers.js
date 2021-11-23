@@ -17,14 +17,10 @@ const resolvers = {
     project: async(parent, { projectId }) => {
       return Project.findOne({ _id: projectId })
     },
-    // if username provided, search for item by username, else find all items and sort by reverse creation order
+    // if username provided, search for project by username, else find all projects and sort by reverse creation order
     project: async(parent, { username }) => {
       const params = username ? { username } : {};
       return Project.find(params).sort({createdAt: -1})
-    },
-    // search for item via genre
-    genreItems: async(parent, { genre }) => {
-      return Item.find({ genre })
     },
     // search for user via the user context (logged in user) - throw error if not logged in
     me: async (parent, args, context) => {
